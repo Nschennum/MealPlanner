@@ -2,5 +2,5 @@
 # dependencies
 /node_modules
 
-# # heroku git clone
-# /protected-springs-83415
+# heroku git clone
+/protected-springs-83415
