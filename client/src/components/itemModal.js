@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addItem } from "../actions/itemActions";
+import "../App.css";
 
 class ItemModal extends React.Component {
   state = {
@@ -45,13 +46,13 @@ class ItemModal extends React.Component {
     
     return (
       
-      <div>
+      <div className="AddItemButton">
         <Button
           color="dark"
-          style={{ marginBottom: "2rem" }}
+          style={{ marginBottom: "2rem"}}
           onClick={this.toggle}
         >
-          Add Item
+          + Ingredient
         </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Add To Shopping List</ModalHeader>
@@ -68,7 +69,7 @@ class ItemModal extends React.Component {
                 />
                 <Button color="dark" style={{ marginTop: "2rem" }} block>
                   {" "}
-                  Add Item
+                  Add Ingredient
                 </Button>
               </FormGroup>
             </Form>
