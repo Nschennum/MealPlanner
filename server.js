@@ -4,11 +4,11 @@ const cors = require("cors");
 const path = require("path");
 const items = require("./routes/api/items");
 const recipes = require("./routes/api/recipes");
-const image = require("./routes/api/images");
-var formidable = require("formidable");
-var fs = require("fs");
-var grid = require("gridfs-stream");
-var multer = require("multer");
+
+// var formidable = require("formidable");
+// var fs = require("fs");
+// var grid = require("gridfs-stream");
+// var multer = require("multer");
 
 // require('dotenv').config();
 
@@ -29,7 +29,6 @@ mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
 
-app.use("./image", image);
 app.use("/items", items);
 app.use("/recipes", recipes);
 // app.use("/image", image, function() {
