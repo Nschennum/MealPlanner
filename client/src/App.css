@@ -19,3 +19,17 @@ opacity: 1;
 opacity: 0.01; 
 transition: opacity 1000ms ease-in; 
 }
+
+  .outer {
+  display: flex;
+}
+
+.icon {
+  display: flex; 
+}
+/* .fa-utensils {
+  color: white; 
+} */
+/* .AddItemButton {
+  text-align: center;
+} */

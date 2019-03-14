@@ -9,6 +9,7 @@ import {
   NavLink,
   Container
 } from "reactstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class AppNavbar extends React.Component {
   state = {
@@ -23,14 +24,15 @@ export default class AppNavbar extends React.Component {
   render() {
       return (
         <div>
-        <Navbar color="dark" dark expand="sm" className="mb-5">
-        <Container><NavbarBrand href="/">Shopping List</NavbarBrand>
+        <Navbar color="dark" dark expand="lg" className="mb-5">
+        <Container><NavbarBrand href="/"> <FontAwesomeIcon icon="utensils"/>{" "}Meal Planning</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
         <Nav className="ml-auto" navbar>
-        <NavItem>
-            <NavLink href="https://github.com/Nschennum">
-            Github
+        <NavItem className="icon">
+        <i className="fa fa-pinterest fa-2x" style={{marginTop: ".4rem"}}></i>
+            <NavLink href="https://www.pinterest.com/">
+            Inspiration
             </NavLink>
         </NavItem>
         </Nav>
