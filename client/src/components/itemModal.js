@@ -35,25 +35,29 @@ class ItemModal extends React.Component {
     const newItem = {
       name: this.state.name
     };
+    
     //Add item via AddItem Action
     this.props.addItem(newItem);
-   
+
     //Close modal
     this.toggle();
   };
 
   render() {
-    
     return (
-      
       <div className="AddItemButton">
-        <Button
-          color="dark"
-          style={{ marginBottom: "2rem"}}
-          onClick={this.toggle}
-        >
-          + Ingredient
-        </Button>
+        {this.props.isAuthenticated ? (
+          <Button
+            color="dark"
+            style={{ marginBottom: "2rem" }}
+            onClick={this.toggle}
+          >
+            + Ingredient
+          </Button>
+        ) : (
+          <h4 className="mb-3 ml-4">Please log in to manage items</h4>
+        )}
+
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Add To Shopping List</ModalHeader>
           <ModalBody>
@@ -81,7 +85,8 @@ class ItemModal extends React.Component {
 }
 
 const mSTP = state => ({
-  item: state.item
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
