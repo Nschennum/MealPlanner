@@ -1,11 +1,11 @@
 export const GET_ITEMS = 'GET_ITEMS'; 
 export const ADD_ITEM = 'ADD_ITEM'; 
 export const DELETE_ITEM = 'DELETE_ITEM'; 
-export const ITEMS_LOADING = 'ITEMS_LOAING';
+export const ITEMS_LOADING = 'ITEMS_LOADING';
 export const GET_RECIPES = 'GET_RECIPES'; 
 export const ADD_RECIPE = 'ADD_RECIPE'; 
 export const DELETE_RECIPE = 'DELETE_RECIPE'; 
-export const RECIPES_LOADING = 'RECIPES_LOAING';
+export const RECIPES_LOADING = 'RECIPES_LOADING';
 // export const GET_IMAGES = 'GET_IMAGES'; 
 // export const ADD_IMAGE = 'ADD_IMAGE'; 
 // export const DELETE_IMAGE = 'DELETE_IMAGE'; 
