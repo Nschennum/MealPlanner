@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Collapse,
   Navbar,
@@ -17,7 +17,7 @@ import LoginModal from './auth/LoginModal';
 import Logout from './auth/Logout';
 
 
-export default class AppNavbar extends React.Component {
+class AppNavbar extends React.Component {
   state = {
     isOpen: false
   };
