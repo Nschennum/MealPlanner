@@ -1,5 +1,9 @@
 import axios from 'axios'; 
-import { GET_RECIPES, ADD_RECIPE, DELETE_RECIPE, ADD_IMAGE, RECIPES_LOADING} from './types';
+import { GET_RECIPES, ADD_RECIPE, DELETE_RECIPE, RECIPES_LOADING} from './types';
+import { tokenConfig } from './authActions';
+import { returnErrors } from './errorActions';
+
+//Add Image Later
 
 export const getRecipes = () => dispatch => {
     dispatch(setRecipesLoading());
@@ -10,10 +14,13 @@ export const getRecipes = () => dispatch => {
        payload: res.data
    })
    )
+   .catch(err =>
+    dispatch(returnErrors(err.response.data, err.response.status))
+  );
 }
-export const addRecipe = recipe => dispatch => {
+export const addRecipe = recipe => ( dispatch, getState ) => {
    axios
-   .post('/api/recipes', recipe)
+   .post('/api/recipes', recipe, tokenConfig(getState))
    .then(res => 
     dispatch({
         type: ADD_RECIPE, 
@@ -29,14 +36,17 @@ export const addRecipe = recipe => dispatch => {
 //          payload: res.data
 //      }))
 //  }
-export const deleteRecipe = id => dispatch => {
+export const deleteRecipe = id => (dispatch, getState) => {
     axios
-    .delete(`/api/recipes/${id}`)
+    .delete(`/api/recipes/${id}`, tokenConfig(getState))
     .then(res => 
         dispatch({
             type: DELETE_RECIPE, 
             payload: id
         }))
+        .catch(err =>
+            dispatch(returnErrors(err.response.data, err.response.status))
+          );
 
 }
 export const setRecipesLoading = () => {
