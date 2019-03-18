@@ -15,6 +15,12 @@ import { getRecipes, deleteRecipe } from "../actions/recipeActions";
 import PropTypes from "prop-types";
 
 class RecipeList extends React.Component {
+  static propTypes = {
+    getRecipes: PropTypes.func.isRequired,
+    recipe: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
+  };
+
   componentDidMount() {
     this.props.getRecipes();
   }
@@ -40,6 +46,7 @@ class RecipeList extends React.Component {
                   <CardBody>
                     <CardTitle>{title}</CardTitle>
                     <CardText>{text}</CardText>
+                    {this.props.isAuthenticated ? (
                     <Button
                       className="remove-btn"
                       color="danger"
@@ -48,6 +55,7 @@ class RecipeList extends React.Component {
                     >
                       - Recipe
                     </Button>
+                         ) : null}
                     <i className="fa fa-accessible-icon fa-2x" style={{color: "black"}}></i>
                   </CardBody>
                 </Card>
@@ -60,10 +68,6 @@ class RecipeList extends React.Component {
   }
 }
 
-RecipeList.propTypes = {
-  getRecipes: PropTypes.func.isRequired,
-  recipe: PropTypes.object.isRequired
-};
 
 const mSTP = state => ({
   recipe: state.recipe

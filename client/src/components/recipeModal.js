@@ -10,20 +10,17 @@ import {
   Input
 } from "reactstrap";
 import { connect } from "react-redux";
-import { addRecipe, addImage } from "../actions/recipeActions";
+import { addRecipe } from "../actions/recipeActions";
 import "../App.css";
 
 class RecipeModal extends React.Component {
-    constructor(props) {
-        super(props)
-    this.state = {
+    state = {
     modal: false,
     img: [],
     title: "",
     text: "",
-  }
- 
-    }
+  };
+  
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -59,10 +56,10 @@ class RecipeModal extends React.Component {
   onSubmit = e => {
     e.preventDefault();
 
-    let newImg = new FormData();
-    newImg.append('Image', newImg[0]);
-    newImg = this.state.img;
-    this.props.addImage(newImg);
+    // let newImg = new FormData();
+    // newImg.append('Image', newImg[0]);
+    // newImg = this.state.img;
+    // this.props.addImage(newImg);
 
     const newRecipe = {
       title: this.state.title,
@@ -78,6 +75,7 @@ class RecipeModal extends React.Component {
   render() {
     return (
       <div className="AddRecipeButton">
+          {this.props.isAuthenticated ? (
         <Button
           color="dark"
           style={{ marginBottom: "2rem" }}
@@ -85,6 +83,9 @@ class RecipeModal extends React.Component {
         >
           + Recipe
         </Button>
+            ) : (
+              <h4 className="mb-3 ml-4">Please log in to manage items</h4>
+            )}
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Add To Recipe List</ModalHeader>
           <ModalBody>
@@ -126,10 +127,11 @@ class RecipeModal extends React.Component {
 }
 
 const mSTP = state => ({
-  recipe: state.recipe
+  recipe: state.recipe,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
   mSTP,
-  { addRecipe, addImage }
+  { addRecipe }
 )(RecipeModal);
