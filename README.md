@@ -13,3 +13,9 @@ JWToken with Bcrypt.
 ## Features
  
 Redux; Bootstrap; FA icons; image from pexels. 
+
+## Check it out: 
+
+https://meal-planner-101.herokuapp.com/
+UN: tester@gmail.com
+PW: tester123
