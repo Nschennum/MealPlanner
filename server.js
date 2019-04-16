@@ -2,11 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require('config');
 const path = require("path");
-
-// var formidable = require("formidable");
-// var fs = require("fs");
-// var grid = require("gridfs-stream");
-// var multer = require("multer");
+const crypto = require('crypto');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override');
 
 // require('dotenv').config();
 
@@ -15,19 +15,24 @@ const app = express();
 
 //Middleware
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 
 //DB Config
 const db = config.get('mongoURI');
 
+
+
 // Connect to Mongo
-mongoose
+ mongoose
   .connect(db, { 
     useNewUrlParser: true,
     useCreateIndex: true
   }) // Adding new mongo url parser
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
+
+
 
 // Routes
 app.use('/api/items', require('./routes/api/items'));

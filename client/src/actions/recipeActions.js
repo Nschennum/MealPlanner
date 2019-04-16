@@ -27,9 +27,9 @@ export const addRecipe = recipe => ( dispatch, getState ) => {
         payload: res.data
     }))
 }
-// export const addImage = image => dispatch => {
+// export const addImage = image => (dispatch, getState) => {
 //     axios
-//     .post('/image', image)
+//     .post('/api/recipes/upload', image, tokenConfig(getState))
 //     .then(res => 
 //      dispatch({
 //          type: ADD_IMAGE, 
