@@ -49,13 +49,13 @@ class ItemModal extends React.Component {
         {this.props.isAuthenticated ? (
           <Button
             color="dark"
-            style={{ marginBottom: "2rem" }}
+            style={{ marginBottom: "2rem", fontStyle: 'italic'}}
             onClick={this.toggle}
           >
-            + Ingredient
+            Ingredient
           </Button>
         ) : (
-          <h4 className="mb-3 ml-4">Please log in to manage items</h4>
+<p></p>
         )}
 
         <Modal isOpen={this.state.modal} toggle={this.toggle}>

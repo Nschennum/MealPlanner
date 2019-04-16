@@ -66,6 +66,7 @@ class AppNavbar extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
         <Nav className="ml-auto" navbar>
         {isAuthenticated ? authLinks : guestLinks}
+        <p style={{paddingTop: '.5rem', paddingRight: '.5rem',paddingLeft: '.5rem'}}>|</p>
         <NavItem className="icon">
         <i className="fa fa-pinterest fa-2x" style={{marginTop: ".4rem"}}></i>
             <NavLink href="https://www.pinterest.com/">

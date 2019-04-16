@@ -1,7 +1,24 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+
 .remove-btn {
   margin-right: 0.5rem;
 }
+.App {
+  /* The image used */
+  background-image: url(./images/food.jpg);
 
+  /* Full height */
+  height: 100vh; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .fade-enter {
   opacity: 0.01; 
 }
@@ -27,9 +44,16 @@ transition: opacity 1000ms ease-in;
 .icon {
   display: flex; 
 }
-/* .fa-utensils {
-  color: white; 
-} */
+
 /* .AddItemButton {
   text-align: center;
+} */
+.message {
+  color: white;
+  mix-blend-mode: difference;
+}
+/* .outer-message {
+  background: white; 
+  opacity: 0.7;
+  border-radius: 5px; 
 } */

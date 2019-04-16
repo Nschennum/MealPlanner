@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import { getRecipes, deleteRecipe } from "../actions/recipeActions";
 import PropTypes from "prop-types";
 
+
 class RecipeList extends React.Component {
   static propTypes = {
     getRecipes: PropTypes.func.isRequired,
@@ -37,7 +38,7 @@ class RecipeList extends React.Component {
             {recipes.map(({ _id, img, title, text }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <Card>
-                <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+                {/* <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" /> */}
                   {/* <CardImg
                     top
                     width="100%"

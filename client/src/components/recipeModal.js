@@ -10,17 +10,17 @@ import {
   Input
 } from "reactstrap";
 import { connect } from "react-redux";
-import { addRecipe } from "../actions/recipeActions";
+import { addRecipe} from "../actions/recipeActions";
 import "../App.css";
 
 class RecipeModal extends React.Component {
-    state = {
+  state = {
     modal: false,
     img: [],
     title: "",
-    text: "",
+    text: ""
   };
-  
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -31,43 +31,43 @@ class RecipeModal extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-// _handleImageChange(e) {
-//     e.preventDefault();
+  // _handleImageChange(e) {
+  //     e.preventDefault();
 
-//     let reader = new FileReader();
-//     let img = e.target.files[0];
+  //     let reader = new FileReader();
+  //     let img = e.target.files[0];
 
-//     reader.onload = () => {
-//       this.setState({
-//         img: reader.result
-//       });
-//     }
+  //     reader.onload = () => {
+  //       this.setState({
+  //         img: reader.result
+  //       });
+  //     }
 
-//     reader.readAsDataURL(img)
-//   };
-// addImg = e => {
-//     e.preventDefault();
-//     let newImg = new FormData();
-//     newImg.append('Image', img[0]);
-//     newImg = this.state.img;
-//     this.props.addImage(newImg);
-// }
+  //     reader.readAsDataURL(img)
+  //   };
+  // addImg = e => {
+  //     e.preventDefault();
+  //     let newImg = new FormData();
+  //     newImg.append('Image', img[0]);
+  //     newImg = this.state.img;
+  //     this.props.addImage(newImg);
+  // }
 
   onSubmit = e => {
     e.preventDefault();
 
-    // let newImg = new FormData();
-    // newImg.append('Image', newImg[0]);
-    // newImg = this.state.img;
-    // this.props.addImage(newImg);
-
+    // let img = new FormData();
+    // img.append("Image", img[0]);
+    // const newImg = {
+    //   img: this.state.img
+    // };
     const newRecipe = {
       title: this.state.title,
       text: this.state.text
     };
     //Add recipe via AddRecipe Action
     this.props.addRecipe(newRecipe);
-
+    // this.props.addImage(newImg);
     //Close modal
     this.toggle();
   };
@@ -75,30 +75,38 @@ class RecipeModal extends React.Component {
   render() {
     return (
       <div className="AddRecipeButton">
-          {this.props.isAuthenticated ? (
-        <Button
-          color="dark"
-          style={{ marginBottom: "2rem" }}
-          onClick={this.toggle}
-        >
-          + Recipe
-        </Button>
-            ) : (
-              <h4 className="mb-3 ml-4">Please log in to manage items</h4>
-            )}
+        {this.props.isAuthenticated ? (
+          <Button
+            color="dark"
+            style={{ marginBottom: "2rem", fontStyle: 'italic' }}
+            onClick={this.toggle}
+          >
+        
+            Recipe
+          </Button>
+        ) : (
+          <div className="outer-message">
+          <h3 className="message mb-3 ml-4">PLEASE LOGIN TO CONTRIBUTE!</h3>
+          </div>
+        )}
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Add To Recipe List</ModalHeader>
           <ModalBody>
-            <Form action='/images' method="post" encType="multipart/form-data" onSubmit={this.onSubmit}>
+            <Form
+              action="/images"
+              method="post"
+              encType="multipart/form-data"
+              onSubmit={this.onSubmit}
+            >
               <FormGroup>
                 <Label for="recipe">Recipe</Label>
-                <Input
+                {/* <Input
                   type="file"
                   name="img"
-                  id="upload"  
+                  id="upload"
                   placeholder="Picture"
                   onChange={this.onChange.bind(this)}
-                />
+                /> */}
                 <Input
                   type="text"
                   name="title"
