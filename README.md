@@ -4,8 +4,12 @@ This app helps you plan meals with a list for ingredient inventory and a list fo
 
 ## MERN Stack
 
-This app uses MongoDB, Node, Express and React.
+This app uses MongoDB, Node, Express and React. 
+
+## Authentication 
+
+JWToken with Bcrypt. 
 
 ## Features
  
-Redux; Bootstrap; FA icons. 
+Redux; Bootstrap; FA icons; image from pexels. 
